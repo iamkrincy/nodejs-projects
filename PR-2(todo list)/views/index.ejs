@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  h1{
+    border: 1px solid;
+    }
+  input{
+    margin: 10px;
+    padding: 10px;
+  }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: lue;
+}
+
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #f7f7f7;
+  background-image: linear-gradient(to bottom, #f7f7f7, #ffe6cc);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div[align="center"] {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  border: none;
+  padding: 10px;
+  background-color: #0c0572;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: #1a0010;
+}
+
+.todo-list {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f7f7f7;
+  color: #000000;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+input[type="text"], input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+  background-color: #0c0572;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #087c3c;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a.delete {
+  padding: 10px;
+  color: #fdfdfd;
+  background-color: #011f81;
+}
+
+a.edit {
+  padding: 10px;
+  color: #fbffff;
+  background-color: #09b5cc;
+}
+
+a:hover {
+  color: #666;
+}
+
+/* Add some animations */
+
+div[align="center"] {
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+input[type="submit"] {
+  transition: background-color 0.5s;
+}
+
+input[type="submit"]:hover {
+  transition: background-color 0.5s;
+}
+</style>
+
+</head>
+<body>
+
+  <div align="center">
+    <h1>TODO LIST</h1>
+    <div class="row">
+      <div class="col-6">
+        <h3>ADD TASK</h3>
+        <form action="/insertTask" method="post">
+          <table border="1" class="tbl">
+            <thead>
+              <tr>
+                <th>Task :-
+                  <input type="text" placeholder="Enter Task" name="task">
+                </th>
+              </tr>
+  
+              <tr>
+                <th>Status :-
+                  <input type="text" placeholder="Enter Status" name="status">
+                </th>
+              </tr>
+  
+              <tr>
+                <th>Deadline :-
+                  <input type="datetime-local" name="deadline">
+                </th>
+              </tr>
+  
+              <tr>
+                <th>
+                  <input type="submit" value="Add Task">
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </form>
+      </div>
+      <div class="col-6">
+        <h3>TODO LIST</h3>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Status</th>
+              <th>Deadline</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <% all.map((task,i) =>{ %>
+            <tr>
+              <td><%= task.task %></td>
+              <td><%= task.status %></td>
+              <td><%= task.deadline %></td>
+              <td><a class="delete" href="/delete?id=<%= task.id %>">Delete</a>   
+              <a class="edit" href="/edit?id=<%= task.id %>">Edit</a></td>
+            </tr>
+  
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
