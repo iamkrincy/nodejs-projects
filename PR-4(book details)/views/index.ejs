@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: rgb(132, 201, 197); /* Light background */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            color: #2e6b2e; /* Dark text color */
+            margin-bottom: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none; /* Class to hide elements */
+        }
+        #btn {
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #2e6b2e;
+            font-weight: 700;
+        }
+        .table {
+            padding: 40px;
+            margin: 20px 0; /* Space above and below the table */
+        }
+        .table th {
+            padding: 20px;
+            text-align: center; /* Center align table headers */
+        }
+        .table input{
+            width: 80%;
+            padding: 20px;
+        }
+        .table select{
+            width: 100%;
+            padding: 10%;
+            font-size: 16px;
+        }
+        .table option{
+            font-size: 16px;
+        }
+        .table #sub{
+            width: 100%;
+            font-size: 16px;
+            color: white;
+            background-color: rgb(90, 7, 7);
+        }
+        #tbl{
+            padding: 10px;
+        }
+        #button{
+            color: white;
+            background-color: rgba(66, 2, 71, 0.822);
+            padding: 3px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+   <div class="container text-center" align="center">
+       <h1>BOOK STORE DET</h1>
+       <hr/>
+       <div class="btn-group" role="group" aria-label="Basic example">
+           <button type="button" class="btn btn-white" id="btn" onclick="showForm()">Add Book</button>
+           <button type="button" class="btn btn-white" id="btn" onclick="showList()">View Books</button>
+       </div>
+
+       <div id="addBookForm" class="hidden">
+           <form action="/insertRecord" method="post">
+               <table class="table" border="1">
+                   <tr>
+                       <th>BOOK NAME:</th>
+                       <td><input type="text" name="name" class="form-control" required></td>
+                   </tr>
+                   <tr>
+                       <th>BOOK PRICE:</th>
+                       <td><input type="number" name="price" class="form-control" required></td>
+                   </tr>
+                   <tr>
+                       <th>BOOK PAGES:</th>
+                       <td>
+                           <select name="pages" class="form-select" required>
+                               <option value="">---select pages---</option>
+                               <option value="200-400">200-400</option>
+                               <option value="400-600">400-600</option>
+                               <option value="600-800">600-800</option>
+                               <option value="800-1000">800-1000</option>
+                           </select>
+                       </td>
+                   </tr>
+                   <tr>
+                       <th>BOOK AUTHOR:</th>
+                       <td><input type="text" name="author" class="form-control" required></td>
+                   </tr>
+                   <tr>
+                       <th></th>
+                       <td><input type="submit" id="sub" class="btn btn-success" value="Submit"></td>
+                   </tr>
+               </table>
+           </form>
+       </div>
+
+       <div id="viewBooks" class="hidden">
+           <table class="table table-hover" id="tbl" border="1">
+               <thead>
+                   <tr>
+                       <th>ID</th>
+                       <th>Book Name</th>
+                       <th>Book Price</th>
+                       <th>Book Pages</th>
+                       <th>Book Author</th>
+                       <th>Action</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <% record.map((value, i) => { 
+                       const { id, name, price, pages, author } = value; %>
+                       <tr>
+                           <td><%= ++i %></td>
+                           <td><%= name %></td>
+                           <td><%= price %></td>
+                           <td><%= pages %></td>
+                           <td><%= author %></td>
+                           <td>
+                            <a href="/delete?deleteid=<%= id %>" id="button" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="/edit?editid=<%= id %>" id="button" class="btn btn-warning btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function showForm() {
+        document.getElementById('addBookForm').classList.remove('hidden');
+        document.getElementById('viewBooks').classList.add('hidden');
+    }
+
+    function showList() {
+        document.getElementById('viewBooks').classList.remove('hidden');
+        document.getElementById('addBookForm').classList.add('hidden');
+    }
+</script>
+</body>
+</html>
