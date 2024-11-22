@@ -12,37 +12,37 @@ const travelPosts = [
     {
         title: "Istanbul Heritage Trail",
         image: "../images/trail.avif",
-        content: "Explore the vibrant culture and history of Istanbul, where East meets West.",
+        content: "Explore the vibrant culture and history of Istanbul, where East meets West.Travelling is an amazing way to learn a lot of things in life. A lot of people around the world travel every year to many places. Moreover, it is important to travel to humans. Some travel to learn more while some travel to take a break from their life. No matter the reason, travelling opens a big door for us to explore the world beyond our imagination and indulge in many things. Therefore, through this Essay on Travel, we will go through everything that makes travelling great.",
         slug: "istanbul-heritage-trail"
     },
     {
         title: "Turkish Extravaganza",
         image: "../images/tr-3.avif",
-        content: "Experience the unique landscapes and hot air balloon rides in Cappadocia.",
+        content: "Experience the unique landscapes and hot air balloon rides in Cappadocia.Travelling is an amazing way to learn a lot of things in life. A lot of people around the world travel every year to many places. Moreover, it is important to travel to humans. Some travel to learn more while some travel to take a break from their life. No matter the reason, travelling opens a big door for us to explore the world beyond our imagination and indulge in many things. Therefore, through this Essay on Travel, we will go through everything that makes travelling great.",
         slug: "turkish-extravaganza"
     },
     {
         title: "Istanbul Palace",
         image: "../images/palace.avif",
-        content: "Explore the vibrant culture and history of Istanbul, where East meets West.",
+        content: "Explore the vibrant culture and history of Istanbul, where East meets West.Travelling is an amazing way to learn a lot of things in life. A lot of people around the world travel every year to many places. Moreover, it is important to travel to humans. Some travel to learn more while some travel to take a break from their life. No matter the reason, travelling opens a big door for us to explore the world beyond our imagination and indulge in many things. Therefore, through this Essay on Travel, we will go through everything that makes travelling great.",
         slug: "istanbul-palace"
     },
     {
         title: "Antalya",
         image: "../images/antalya.webp",
-        content: "Enjoy the beautiful beaches and rich history of Antalya.",
+        content: "Enjoy the beautiful beaches and rich history of Antalya.Travelling is an amazing way to learn a lot of things in life. A lot of people around the world travel every year to many places. Moreover, it is important to travel to humans. Some travel to learn more while some travel to take a break from their life. No matter the reason, travelling opens a big door for us to explore the world beyond our imagination and indulge in many things. Therefore, through this Essay on Travel, we will go through everything that makes travelling great.",
         slug: "antalya"
     },
     {
         title: "Ankara",
         image: "../images/ankara.jpg",
-        content: "Explore the capital city of Turkey, rich in culture and history.",
+        content: "Explore the capital city of Turkey, rich in culture and history.Travelling is an amazing way to learn a lot of things in life. A lot of people around the world travel every year to many places. Moreover, it is important to travel to humans. Some travel to learn more while some travel to take a break from their life. No matter the reason, travelling opens a big door for us to explore the world beyond our imagination and indulge in many things. Therefore, through this Essay on Travel, we will go through everything that makes travelling great.",
         slug: "istanbul-ankara"
     },
     {
         title: "Pamukkale",
         image: "../images/pamukkale.jpg",
-        content: "Visit the stunning terraces of Pamukkale, known for its thermal springs.",
+        content: "Visit the stunning terraces of Pamukkale, known for its thermal springs.Travelling is an amazing way to learn a lot of things in life. A lot of people around the world travel every year to many places. Moreover, it is important to travel to humans. Some travel to learn more while some travel to take a break from their life. No matter the reason, travelling opens a big door for us to explore the world beyond our imagination and indulge in many things. Therefore, through this Essay on Travel, we will go through everything that makes travelling great.",
         slug: "pamukkale"
     },
 ];
