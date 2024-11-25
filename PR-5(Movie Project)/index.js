@@ -18,17 +18,17 @@ app.use(express.urlencoded())
 
 app.use("/uploads",express.static(path.join(__dirname,"uploads")))
 
-const st = multer.diskStorage({
-    destination:(req,res,cb)=>{
-        cb(null,"uploads")
-    },
-    filename:(req,file,cb)=>{
-        const uniq = Math.floor(Math.random() * 100000);
-        cb(null,`${file.fieldname}-${uniq}`)
-    }
-})
+    const st = multer.diskStorage({
+        destination:(req,res,cb)=>{
+            cb(null,"uploads")
+        },
+        filename:(req,file,cb)=>{
+            const uniq = Math.floor(Math.random() * 100000);
+            cb(null,`${file.fieldname}-${uniq}`)
+        }
+    })
 
-const fileUpload = multer({storage:st}).single("image");
+    const fileUpload = multer({storage:st}).single("image");
 
 app.get('/' , (req,res) =>{
     user.find({})

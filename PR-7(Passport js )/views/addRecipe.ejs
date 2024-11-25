@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Add Recipes</title>
+
+    <style>
+       body{
+        background-color: rgb(255, 248, 240);
+        font-family: 'Courier New', Courier, monospace;
+       }
+       .btn{
+        background-color: maroon;
+        color: aliceblue;
+       }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Add Recipes</h2>
+        <form action="/addRecipe" method="post" enctype="multipart/form-data">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Title:</th>
+                        <td><input type="text" name="title" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Ingredients:</th>
+                        <td><input type="text" name="ingredients" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Instructions:</th>
+                        <td><input type="text" name="instructions" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Image:</th>
+                        <td><input type="file" name="image" class="form-control"  required></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark">Add Recipe</button>
+                <a href="/" class="btn btn-dark">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-6nN7i6XQJ3z8xqv8c3n4lPp3pZ5p5J3mZ5p5Q5J5p5J5p5Q5J5p5Q5J5p5Q5J5" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-5s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4s6D4" crossorigin="anonymous"></script>
+</body>
+</html>
