@@ -231,6 +231,13 @@ const updateRecipe = async (req, res) => {
     }
 };
 
+const logoutUser = (req,res) =>{
+    req.logout((err) =>{
+        console.log(err);
+        return false;
+    })
+    return res.redirect('/')
+}
 module.exports = {
-    loginPage, loginUser, dashboardPage, registerUser, registerPage, logout , getRecipe , add , createRecipe , viewRecipes , deleteRecipe , editRecipe , updateRecipe
+    loginPage, loginUser, dashboardPage, registerUser, registerPage, logout , getRecipe , add , createRecipe , viewRecipes , deleteRecipe , editRecipe , updateRecipe , logoutUser
 }

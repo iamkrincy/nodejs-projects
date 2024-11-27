@@ -19,7 +19,7 @@ const fileUpload = multer({storage:st}).single("image");
 
 const routes = express.Router();
 
-const { loginPage, registerPage, dashboardPage, registerUser, loginUser, logout, getRecipe, add, createRecipe, viewRecipes, deleteRecipe, editRecipe, updateRecipe } = require('../controllers/authController');
+const { loginPage, registerPage, dashboardPage, registerUser, loginUser, getRecipe, add, createRecipe, viewRecipes, deleteRecipe, editRecipe, updateRecipe, logoutUser } = require('../controllers/authController');
 
 
 // Route to get a specific recipe
@@ -29,7 +29,7 @@ routes.get('/register',registerPage);
 routes.get('/dashboard', passport.checkuser,dashboardPage);
 routes.post('/registeruser' , registerUser);
 routes.post('/loginuser' ,passport.authenticate('local',{failureRedirect:'/'})  , loginUser);
-routes.get('/logout' , logout);
+routes.get('/logoutUser' , logoutUser);
 routes.get('/add', add); // Route to render the add recipe page
 routes.post('/addRecipe',fileUpload, createRecipe); // Route to handle recipe creation
 routes.get('/viewRecipes', viewRecipes);
