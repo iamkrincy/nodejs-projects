@@ -26,7 +26,7 @@ const { loginPage, registerPage, dashboardPage, registerUser, loginUser, getReci
 routes.get('/recipe/:recipeId', getRecipe);
 routes.get('/' , loginPage);
 routes.get('/register',registerPage);
-routes.get('/dashboard', passport.checkuser,dashboardPage);
+routes.get('/dashboard', passport.chekuser,dashboardPage);
 routes.post('/registeruser' , registerUser);
 routes.post('/loginuser' ,passport.authenticate('local',{failureRedirect:'/'})  , loginUser);
 routes.get('/logoutUser' , logoutUser);

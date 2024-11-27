@@ -6,6 +6,7 @@ const UserModel = require('../models/UserModel');
 
 const user = require('../models/UserModel');
 
+
 passport.use(new passportLocal({
     usernameField:'email'
 },async (email,password,done) =>{
@@ -41,11 +42,11 @@ passport.deserializeUser (async (id,done) =>{
     }
 });
 
-passport.checkuser = (req,res,next) =>{
-        if(!req.isAuthenticated()){
-            return res.redirect('/')
+passport.chekuser = (req,res,next) =>{
+        if(req.isAuthenticated()){
+            return next();
         }
-        return next();
+        return res.redirect('/')
 }
 
 passport.setuser = (req,res,next) =>{
