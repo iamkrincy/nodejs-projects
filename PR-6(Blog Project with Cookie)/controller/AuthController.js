@@ -62,18 +62,30 @@ const logout = (req,res) => {
 }
 
 const travel = (req,res) =>{
+    if(!req.cookies['auth']){
+        return res.redirect('/')
+    }
     return res.render('travel')
 }
 
 const eat = (req,res) =>{
+    if(!req.cookies['auth']){
+        return res.redirect('/')
+    }
     return res.render('eat')
 }
 
 const relax = (req,res) =>{
+    if(!req.cookies['auth']){
+        return res.redirect('/')
+    }
     return res.render('relax')
 }
 
 const add = (req,res) =>{
+    if(!req.cookies['auth']){
+        return res.redirect('/')
+    }
     console.log("Add route accessed"); // Add this line
      
     return res.render('add')
@@ -139,35 +151,41 @@ const editData = async (req,res) =>{
     }
 }
 
-const updateRecord= async (req, res)=>{
-    try {
-        const {editid,title,content}=req.body 
+const updateRecord = async(req,res) => {
+    try{
+        const {editid,title,content} = req.body;
+        if(req.file){
+            let single = await travelModel.findById(editid);
+            fs.unlinkSync(single.image);
+            await travelModel.findByIdAndUpdate(editid,{
+               title:title,
+               content:content,
+                image : req.file.path,
+            })
+            console.log("record update");
+            return res.redirect('/view');
+        }else{
+            let single = await travelModel.findById(editid);
 
-        if (req.file) {
-            let post =await travelModel.findById(editid)
-            fs.unlinkSync(post.image) 
-    
             await travelModel.findByIdAndUpdate(editid,{
                 title:title,
                 content:content,
-                image:req.file.path
+                image:single.image,
             })
-              return res.redirect('/view')
-        } else {
-            let single=await travelModel.findById(editid)
-    
-            await travelModel.findByIdAndUpdate(editid,{
-                title:title,
-                content:content,
-                image:single.image
-            })
-              return res.redirect('/view')
-    
+            console.log("record update");
+            return res.redirect('/view');
         }
-    } catch (error) {
-        console.log(Error);
+    }catch(err){
+        console.log(err);
         return false;
-    }}
+    }
+}
+
+
+
+
+
+
 
 
 module.exports = {

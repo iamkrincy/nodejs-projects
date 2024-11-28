@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 
 const port = 8080;
 
@@ -7,6 +9,8 @@ const app = express();
 const path = require('path')
 
 const database = require('./config/db');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const cookieparser = require('cookie-parser');
 

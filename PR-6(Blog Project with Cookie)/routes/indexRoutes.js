@@ -32,6 +32,6 @@ routes.post('/addRecord', fileUpload,addRecord);
 routes.get('/view',view);
 routes.get('/deleteData',deleteData);
 routes.get('/edit',editData);
-routes.post('/update',fileUpload,updateRecord)
+routes.post('/update', fileUpload, updateRecord)
 
 module.exports = routes;
