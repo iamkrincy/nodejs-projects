@@ -2,7 +2,8 @@ const express = require('express');
 
 const routes = express.Router();
 
-routes.use('/',require('./authRoute'));
+routes.use('/',require('./AuthRoutes'));
+routes.use('/category',require('./CategoryRoute'));
 
 
 module.exports = routes;

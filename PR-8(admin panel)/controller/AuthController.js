@@ -152,6 +152,34 @@ const postNewpassword = async(req,res) => {
         return false;
     }
 }
+
+const profilePage = (req, res) => {
+    try {
+        return res.render('profile');
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+
+
+const profileChange = async (req,res) =>{
+    try {
+        const {editprofile,name,password} = req.body;
+        await UserModel.findOneAndUpdate({email:editprofile},{
+            name :name,
+            password:password,
+    })
+    console.log("profile succesfully changed");
+
+    return res.redirect('/dashboard')
+        
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+}
+
 module.exports = {
-    loginPage,registerPage,registerUser,loginUser,dashboardPage,logoutUser,forgotPassword,otpPage,postOtp,newpass,postNewpassword
+    loginPage,registerPage,registerUser,loginUser,dashboardPage,logoutUser,forgotPassword,otpPage,postOtp,newpass,postNewpassword,profileChange, profilePage
 }

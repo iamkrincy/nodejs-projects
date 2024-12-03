@@ -60,18 +60,16 @@
         "
       >
         <div class="auth-box bg-dark border-top border-secondary">
-          <div id="loginform">
+          <div>
             <div class="text-center pt-3 pb-3">
               <span class="db"
                 ><img src="../assets/images/logo.png" alt="logo"
               /></span>
             </div>
             <!-- Form -->
-            <form method="post"
-              class="form-horizontal mt-3"
-              id="loginform"
-              action="/loginuser"
-            >
+             <h2 class="text-white">Profile Page</h2>
+            <form method="post" class="form-horizontal mt-3" action="/profileChange">
+              <input type="hidden" name="Editprofile" value="<%= locals.user.email%>">
               <div class="row pb-4">
                 <div class="col-12">
                   <div class="input-group mb-3">
@@ -83,12 +81,30 @@
                       ></span>
                     </div>
                     <input
-                      type="text" name="email"
+                      type="text" name="name" value="<%= locals.user.name %>"
                       class="form-control form-control-lg"
-                      placeholder="Useremail"
+                      placeholder="Username"
                       aria-label="Username"
                       aria-describedby="basic-addon1"
-                      required=""
+                      required
+                    />
+                  </div>
+                  <!-- email -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span
+                        class="input-group-text bg-danger text-white h-100"
+                        id="basic-addon1"
+                        ><i class="mdi mdi-email fs-4"></i
+                      ></span>
+                    </div>
+                    <input
+                      type="text" name="email" disabled value="<%= locals?.user?.email %>"
+                      class="form-control form-control-lg"
+                      placeholder="Email Address"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                      required
                     />
                   </div>
                   <div class="input-group mb-3">
@@ -100,88 +116,31 @@
                       ></span>
                     </div>
                     <input
-                      type="text" name="password"
+                      type="text" name="password" value="<%= locals?.user?.password %>"
                       class="form-control form-control-lg"
                       placeholder="Password"
                       aria-label="Password"
                       aria-describedby="basic-addon1"
-                      required=""
+                      required
                     />
                   </div>
                 </div>
-              </div>
-              <div class="text-white">Don't have an account?<a href="/register" class="text-danger">Register Here</a></div>
+                </div>
               <div class="row border-top border-secondary">
                 <div class="col-12">
                   <div class="form-group">
-                    <div class="pt-3">
+                    <div class="pt-3 d-grid">
                       <button
-                        class="btn btn-info"
-                        id="to-recover"
-                        type="button"
-                      >
-                        <i class="mdi mdi-lock fs-4 me-1"></i> Lost password?
-                      </button>
-                      <button
-                        class="btn btn-success float-end text-white"
+                        class="btn btn-block btn-lg btn-info"
                         type="submit"
                       >
-                        Login
+                        Sign Up
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
             </form>
-          </div>
-          <div id="recoverform">
-            <div class="text-center">
-              <span class="text-white"
-                >Enter your e-mail address below and we will send you
-                instructions how to recover a password.</span
-              >
-            </div>
-            <div class="row mt-3">
-              <!-- Form -->
-              <form class="col-12" method="post" action="/forgotpassword">
-                <!-- email -->
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span
-                      class="input-group-text bg-danger text-white h-100"
-                      id="basic-addon1"
-                      ><i class="mdi mdi-email fs-4"></i
-                    ></span>
-                  </div>
-                  <input
-                    type="text" name="useremail"
-                    class="form-control form-control-lg"
-                    placeholder="Email Address"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-                <!-- pwd -->
-                <div class="row mt-3 pt-3 border-top border-secondary">
-                  <div class="col-12">
-                    <a
-                      class="btn btn-success text-white"
-                      href="#"
-                      id="to-login"
-                      name="action"
-                      >Back To Login</a
-                    >
-                    <button
-                      class="btn btn-info float-end"
-                      type="submit"
-                      name="action"
-                    >
-                      Recover
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
           </div>
         </div>
       </div>
@@ -212,17 +171,6 @@
     <!-- ============================================================== -->
     <script>
       $(".preloader").fadeOut();
-      // ==============================================================
-      // Login and Recover Password
-      // ==============================================================
-      $("#to-recover").on("click", function () {
-        $("#loginform").slideUp();
-        $("#recoverform").fadeIn();
-      });
-      $("#to-login").click(function () {
-        $("#recoverform").hide();
-        $("#loginform").fadeIn();
-      });
     </script>
   </body>
 </html>
