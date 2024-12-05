@@ -10,6 +10,8 @@ const path = require('path');
 
 const db = require('./config/db');
 
+const flash = require('connect-flash');
+
 const cookieParser = require('cookie-parser');
 
 app.use('/',express.static(path.join(__dirname,'public')));
@@ -29,6 +31,13 @@ app.use(passport.session());
 app.use(passport.initialize());
 app.use(passport.setUser);
 app.use(express.urlencoded());
+
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.message = req.flash();
+    next();
+});
 
 app.use('/',require('./routes/indexRoute'));
 

@@ -180,6 +180,42 @@ const profileChange = async (req,res) =>{
     }
 }
 
+const changePassword = async(req,res)=>{
+    try {
+      return res.render('changePassword')
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
+}
+
+const postChangepassword = async(req,res)=>{
+  try {
+      let email = res.locals.user.email;
+
+      let user = await UserModel.findOne({email:email});
+      const useroldpassword = user.password;
+
+      const {oldpassword,newpassword} = req.body;
+
+      if (oldpassword == useroldpassword) {
+          await UserModel.findOneAndUpdate({email:email},{
+              password: newpassword
+          })
+          console.log("password changed!!!...");
+          
+          return res.redirect('/dashboard');
+      } else {
+          console.log(`old password and newpassword are not match`);
+          return res.redirect('/dashboard')
+          
+      }
+  } catch (err) {
+      console.log(err);
+      return false;
+  }
+}
+
 module.exports = {
-    loginPage,registerPage,registerUser,loginUser,dashboardPage,logoutUser,forgotPassword,otpPage,postOtp,newpass,postNewpassword,profileChange, profilePage
+    loginPage,registerPage,registerUser,loginUser,dashboardPage,logoutUser,forgotPassword,otpPage,postOtp,newpass,postNewpassword,profileChange, profilePage,changePassword,postChangepassword
 }

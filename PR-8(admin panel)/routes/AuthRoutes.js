@@ -14,7 +14,9 @@ const {  registerPage,
     newpass, 
     postNewpassword,
      profileChange,
-    profilePage } = require('../controller/AuthController');
+    profilePage, 
+    changePassword,
+    postChangepassword} = require('../controller/AuthController');
 
 const passport = require('passport');
 
@@ -36,6 +38,8 @@ routes.post('/postnewpassword',postNewpassword);
 routes.get('/profile',profilePage);
 routes.post('/profileChange',profileChange)
 
-
+// password change
+routes.get('/changepassword',changePassword)
+routes.post('/postChangepassword',postChangepassword)
 
 module.exports = routes;
