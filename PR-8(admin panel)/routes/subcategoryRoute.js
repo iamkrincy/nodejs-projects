@@ -6,8 +6,8 @@ const { subcategoryPage, addsubCategory, insertSubcategory } = require('../contr
 
 const passport = require('passport');
 
-routes.get('/',subcategoryPage);
-routes.get('/addsubcategory',addsubCategory);
+routes.get('/',passport.checkUser,subcategoryPage);
+routes.get('/addsubcategory',passport.checkUser,addsubCategory);
 routes.post('/insertsubcategory',insertSubcategory)
 
 module.exports = routes;
