@@ -10,6 +10,8 @@ const path = require('path');
 
 const db = require('./config/db');
 
+app.use("/uploads",express.static(path.join(__dirname,"uploads")))
+
 const flash = require('connect-flash');
 
 const cookieParser = require('cookie-parser');

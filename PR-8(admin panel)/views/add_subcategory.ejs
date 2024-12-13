@@ -43,14 +43,14 @@
                             </div>
                             <% } %>
 
-                                <form action="/category/insertsubcategory" method="post" class="form-horizontal">
+                                <form action="/subcategory/insertsubcategory" method="post" class="form-horizontal">
                                     <div class="card-body">
                                         <h4 class="card-title">Subcategory</h4>
                                         <div class="form-group row">
                                             <label for="fname"
                                                 class="col-sm-3 text-end control-label col-form-label">Category Name</label>
                                             <div class="col-sm-9">
-                                                <select name="subcategory" class="form-control">
+                                                <select name="category" class="form-control">
                                                     <option value="">--- select category ---</option>
                                                     <% category.map((c) => { %>
                                                           <option value="<%= c.id %>"><%= c.category_name %></option>
