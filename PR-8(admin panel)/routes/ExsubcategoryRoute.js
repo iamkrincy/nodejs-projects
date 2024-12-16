@@ -4,8 +4,10 @@ const routes = express.Router();
 
 const {  addexsubcategoryPage, viewexsubcategoryPage,insertExsubcategory,ajaxCategory,deleteExsubcategory,editExsubcategory, changeStatus, updateExsubCategory} = require('../controller/ExsubcategoryController');
 
-routes.get('/',viewexsubcategoryPage);
-routes.get('/addexsubcategorypage',addexsubcategoryPage);
+const passport = require('passport');
+
+routes.get('/',passport.checkUser,viewexsubcategoryPage);
+routes.get('/addexsubcategorypage',passport.checkUser,addexsubcategoryPage);
 routes.post('/insertexsubcategory',insertExsubcategory);
 routes.get('/ajaxGetcategory',ajaxCategory);
 routes.get('/deleteexsubcategory',deleteExsubcategory);

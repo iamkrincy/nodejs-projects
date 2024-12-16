@@ -120,14 +120,14 @@ const changeStatus = async (req, res) => {
 
   const editProduct = async (req,res) => {
     try {
-        let id = req.query.id;
+        let id = req.query.editid;
+
 
         const category = await CategoryModel.find({status : 'active'});
         const subcategory = await SubcategoryModel.find({status : 'active'});
         const exsubcategory = await ExsubcategoryModel.find({status : 'active'});
 
         let single = await ProductModel.findById(id).populate("categoryId").populate("subcategoryId").populate("exsubcategoryId");
-        console.log(single.image);  // Check if the image path is correct
 
         return res.render('edit_product',{
             category:category,
@@ -141,57 +141,11 @@ const changeStatus = async (req, res) => {
     }
   }
 
-
-// const updateProduct = async(req,res) => {
-//     try{
-//       const { editid, category, subcategory, exsubcategory, product, price, desc } = req.body;
-
-//         if(req.file){
-//             let single = await ProductModel.findById(editid);
-//             fs.unlinkSync(single.image);
-//             await ProductModel.findByIdAndUpdate(editid,{
-//                 categoryId: category,
-//                 subcategoryId: subcategory,
-//                 exsubcategoryId: exsubcategory,
-//                 name: product,
-//                 price: price,
-//                 description: desc,
-//                 image : req.file.path
-//             })
-//             console.log("record update");
-//             return res.redirect('/product');
-//         }else{
-//             let single = await ProductModel.findById(editid);
-//             await ProductModel.findByIdAndUpdate(editid,{
-//                 categoryId: category,
-//                 subcategoryId: subcategory,
-//                 exsubcategoryId: exsubcategory,
-//                 name: product,
-//                 price: price,
-//                 description: desc,
-//                 image : single.image
-//             })
-//             console.log("record update");
-//             return res.redirect('/product');
-//         }
-//     }catch(err){
-//         console.log(err);
-//         return false;
-//     }
-// }
-
-const updateProduct = async (req, res) => {
-    try {
+const updateProduct = async (req , res) => {
+    try {        
         const { editid, category, subcategory, exsubcategory, product, price, desc } = req.body;
-
+        
         let single = await ProductModel.findById(editid);
-        console.log("editid:", editid);
-
-
-        if (!single) {
-            console.log("Product not found");
-            return res.redirect('/product');  // Or send an appropriate error response
-        }
 
         if (req.file) {
             // Delete the old image file
@@ -226,13 +180,6 @@ const updateProduct = async (req, res) => {
         return false;
     }
 }
-
-
-
-
-
-
-
 
 
 module.exports = {addProductPage,productPage,addProduct,deleteProduct,ajaxCategory,ajaxsubcategory,changeStatus,editProduct,updateProduct}
