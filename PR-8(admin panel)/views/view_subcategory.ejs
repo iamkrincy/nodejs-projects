@@ -62,8 +62,8 @@
                                     <% subcategory.map((scat,i) =>{ %>
                                             <tr>
                                                 <td><%= ++i %></td>
-                                                <td><%= scat.categoryId.category_name %></td>
-                                                <td><%= scat.subcategory %></td>
+                                                <td><%= scat?.categoryId.category_name %></td>
+                                                <td><%= scat?.subcategory %></td>
                                                 <td>
                                                     <a href=" /subcategory/deletesubcategory?id=<%=scat.id %>"
                                                         class="btn btn-danger btn-sm">

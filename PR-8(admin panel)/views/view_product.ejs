@@ -62,9 +62,9 @@
                                 <% product.map((p,i)=>{ %>
                                     <tr>
                                         <th scope="row"><%= ++i %></th>
-                                        <td><%= p.categoryId.category_name %></td>
-                                        <td><%= p.subcategoryId.subcategory %></td>
-                                        <td><%= p.exsubcategoryId.exsubcategory %></td>
+                                        <td><%= p?.categoryId.category_name %></td>
+                                        <td><%= p?.subcategoryId.subcategory %></td>
+                                        <td><%= p?.exsubcategoryId.exsubcategory %></td>
                                         <td><%= p.name %></td>
                                         <td><%= p.price %></td>
                                         <td><%= p.qty %></td>
