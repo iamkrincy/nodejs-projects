@@ -38,7 +38,7 @@
                                 <form action="/product/updateproduct" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <h4 class="card-title">Add Product</h4>
-                                        <input type="text" name="editid" value="<%= single.id %>">
+                                        <input type="hidden" name="editid" value="<%= single.id %>">
 
                                         <div class="form-group row">
                                             <label for="fname"
