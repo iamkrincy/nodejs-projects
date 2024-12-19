@@ -130,7 +130,7 @@
                     tbl += ` <option value="">---select subcategory---</option>`;
                     category.map((subcat) => {
                         tbl += `
-                            <option>${subcat.subcategory}</option>
+                            <option value="${subcat._id}">${subcat.subcategory}</option>
                         `
                     })
                     document.getElementById("subcategory").innerHTML = tbl ;
