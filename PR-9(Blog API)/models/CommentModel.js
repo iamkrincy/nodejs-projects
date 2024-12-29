@@ -5,9 +5,9 @@ const commentSchema = mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : "user",
     },
-    postid:{
+    blogid:{
         type : mongoose.Schema.Types.ObjectId,
-        ref : "post",
+        ref : "blog",
     },
     comments:{
         type : String,

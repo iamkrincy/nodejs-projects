@@ -6,6 +6,6 @@ const addComment = require('../controllers/CommentsController');
 
 const { Admin, verifyToken } = require('../middleware/Auth');
 
-routes.post('/addcomment',verifyToken,Admin,addComment)
+routes.get('/addcomment',verifyToken,Admin,addComment)
 
 module.exports = routes

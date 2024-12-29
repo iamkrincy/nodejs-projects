@@ -1,60 +1,43 @@
-// const PostModel = require('../models/PostModel');
-// const UserModel = require('../models/UserModel');
-// const CommentModel = require('../models/CommentModel');
-
-// const addComment = async(req,res) => {
-//     try {
-//         const {comments} = req.body;
-
-       
-
-//         const post =await CommentModel.create({
-//             userid : req.user._id,
-//             postid : req.user._id,
-//             comments : comments,
-//         })
-//         return res.status(200).send({
-//             success : true,
-//             message : "comments successfully create",
-//             post
-//         })    
-        
-//     } catch (err) {
-//         return res.status(501).send({ 
-//             success : false,
-//             err : err
-//         })
-//     }
-
-// }
-
-// module.exports = addComment
-
 const CommentModel = require('../models/CommentModel');
-const UserModel = require('../models/UserModel');
+const BlogModel = require('../models/BlogModel');
 
 const addComment = async (req, res) => {
     try {
-        const { comments, postid } = req.body;
+        const { comment, blogid } = req.body;
 
-        // Create a new comment in the database
+        // Validate input
+        if (!comment || !blogid) {
+            return res.status(400).send({
+                success: false,
+                message: "Comment and blog ID are required",
+            });
+        }
+
+        // Check if the blog exists
+        const blog = await BlogModel.findById(blogid);
+        if (!blog) {
+            return res.status(404).send({
+                success: false,
+                message: "Blog not found",
+            });
+        }
+
+        // Create a new comment
         const newComment = await CommentModel.create({
             userid: req.user._id, // Assuming req.user._id contains the authenticated user ID
-            postid: postid,        // Make sure postid is passed in the request body
-            comments: comments
+            blogid: blogid,
+            comment: comment,
         });
 
-        // Return the comment details (with only the fields you need, like comment and associated IDs)
         return res.status(200).send({
             success: true,
             message: "Comment successfully created",
-            comment
+            comment: newComment,
         });
-        
     } catch (err) {
-        return res.status(501).send({
+        return res.status(500).send({
             success: false,
-            message: err.message || "Server error"
+            message: err.message || "Server error",
         });
     }
 };
