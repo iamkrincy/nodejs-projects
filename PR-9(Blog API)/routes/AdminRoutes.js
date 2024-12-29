@@ -2,9 +2,9 @@ const express = require('express');
 
 const routes = express.Router();
 
-const allPost = require('../controllers/AdminController');
 const { Admin, verifyToken } = require('../middleware/Auth');
+const allBlogshow = require('../controllers/AdminController');
 
-routes.get('/allpost',verifyToken,Admin,allPost)
+routes.get('/allblogshow',verifyToken,Admin,allBlogshow)
 
 module.exports = routes;

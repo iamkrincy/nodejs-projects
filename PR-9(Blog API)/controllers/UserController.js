@@ -1,6 +1,37 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require('../models/UserModel');
 
+const registerUser = async (req,res) => {
+    try {
+        const {name,email,password,city,phone} = req.body;
+
+        if(!name || !email || !password || !city || !phone){
+            return res.status(500).send({
+                success : false,
+                message : "All field is required!"
+            })
+        }
+
+        let user = await UserModel.create({
+            name:name,
+            email:email,
+            password:password,
+            city:city,
+            phone:phone
+        })
+        return res.status(200).send({
+            success : true,
+            message : "user Register succesfully",
+            user
+        })
+    } catch (err) { 
+        return res.status(501).send({
+            success : false,
+            err : err
+        })
+    }
+}
+
 const loginUser = async (req,res) => {
     try {
         const {email,password} = req.body;
@@ -32,4 +63,4 @@ const loginUser = async (req,res) => {
     }
 };
 
-module.exports = {loginUser}
+module.exports = {registerUser , loginUser}

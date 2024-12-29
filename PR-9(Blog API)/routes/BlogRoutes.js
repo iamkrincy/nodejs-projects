@@ -2,11 +2,10 @@ const express = require('express');
 
 const routes = express.Router();
 
-const { addPost, viewPost } = require('../controllers/PostController');
-
-const { verifyToken } = require('../middleware/Auth');
+const { verifyToken,Admin } = require('../middleware/Auth');
 
 const multer = require('multer');
+const { addBlog, viewBlog, deleteBlog, updateBlog } = require('../controllers/BlogController');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'uploads')
@@ -19,7 +18,10 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage }).single('image')
 
-routes.post('/addpost',verifyToken,upload,addPost);
-routes.get('/viewpost',verifyToken,viewPost)
+routes.post('/addblog',verifyToken,upload,addBlog);
+routes.get('/viewblog',verifyToken,Admin,viewBlog);
+routes.delete('/deleteblog',verifyToken,Admin,deleteBlog);
+routes.put('/updateblog' ,verifyToken , Admin,upload, updateBlog);
+
 
 module.exports = routes;
