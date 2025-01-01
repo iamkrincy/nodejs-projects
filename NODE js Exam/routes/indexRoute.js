@@ -20,6 +20,7 @@ const fileUpload = multer({storage:st}).single("image");
 const routes = express.Router();
 
 const { loginPage, registerPage, dashboardPage, registerUser, loginUser, logoutUser, addProduct, viewProduct, Delete, edit, updateProduct } = require('../controllers/authController');
+const { addItemToCart, viewCart, updateCartItem, removeCartItem } = require('../controllers/cartController');
 
 
 routes.get('/' , loginPage);
@@ -33,5 +34,8 @@ routes.get('/view',viewProduct);
 routes.get('/delete' , Delete);
 routes.get('/edit' , edit);
 routes.post('/updateproduct',fileUpload,updateProduct)
-
+routes.post('/cart',passport.chekuser,  addItemToCart);
+routes.get('/cart', passport.chekuser, viewCart);
+routes.put('/cart',passport.chekuser,  updateCartItem);
+routes.delete('/cart',passport.chekuser, removeCartItem);
 module.exports = routes;

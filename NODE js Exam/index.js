@@ -4,6 +4,9 @@ const port = 9000;
 
 const app = express();
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const path = require('path')
 
 const database = require('./config/db');
@@ -13,7 +16,6 @@ app.set('view engine' , 'ejs');
 app.use("/uploads",express.static(path.join(__dirname,"uploads")))
 
 app.use("/images", express.static(path.join(__dirname, "images"))); // Serve images from the images folder
-
 
 const passport =  require('passport');
 
